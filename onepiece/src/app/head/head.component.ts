@@ -1,37 +1,52 @@
-import { Component } from '@angular/core';
-
+import { Component ,OnInit } from '@angular/core';
+import { Article } from '../model/article'
+import { ArticleService } from '../service/article.service';
 @Component({
-  selector:'my-nav',
-  template:'<nav class="blog-nav layui-header"> ' +
-  '<div class="blog-container"> ' +
-  '<!-- QQ互联登陆 --> ' +
-  '<a href="javascript:;" class="blog-user"> ' +
-  '<i class="fa fa-qq"></i> ' +
-  '</a> ' +
-  '<a href="javascript:;" class="blog-user layui-hide"> ' +
-  '<img src="images/Absolutely.jpg" alt="Absolutely" title="Absolutely" /> ' +
-  '</a> <!-- 不落阁 --> <a class="blog-logo" href="home.html">onepiece码农</a> ' +
-  '<!-- 导航菜单 --> ' +
-  '<ul class="layui-nav" lay-filter="nav"> ' +
-  '<li class="layui-nav-item layui-this"> ' +
-  '<a href="home.html"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a> ' +
-  '</li> ' +
-  '<li class="layui-nav-item"> ' +
-  '<a href="article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a> ' +
-  '</li> ' +
-  '<li class="layui-nav-item"> ' +
-  '<a href="resource.html"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a> ' +
-  '</li> ' +
-  '<li class="layui-nav-item"> <a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;点点滴滴</a> ' +
-  '</li> ' +
-  '<li class="layui-nav-item"> ' +
-  '<a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a> ' +
-  '</li> ' +
-  '</ul> ' +
-  '<!-- 手机和平板的导航开关 --> ' +
-  '<a class="blog-navicon" href="javascript:;"><i class="fa fa-navicon"></i> </a></div></nav>'
+  selector:'article-list',
+  providers:[ArticleService],
+  template:`
+          <div class="article shadow" *ngFor="let article of articles" (click)="onSelect(article)"> 
+            <div class="article-left">
+              <img src="{{article.contentImage}}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
+            </div>
+            <div class="article-right">
+              <div class="article-title">
+                <a href="detail.html">{{article.title}}</a>
+              </div>
+              <div class="article-abstract">
+                {{article.content}}
+              </div>
+            </div>
+            <div class="clear"></div>
+            <div class="article-footer">
+              <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{article.createTime}}</span>
+              <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;{{article.author}}</span>
+              <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
+              <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
+              <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
+            </div>
+          </div>
+          <div *ngIf="selectedArticle">
+          <h2>{{selectedArticle.content}}</h2>
+          </div>
+          
+          <article-detail [article]="selectedArticle"></article-detail>
+           
+`
 })
 
-export class HeadComponent{
-
+export class HeadComponent implements OnInit{
+  ngOnInit(): void {
+    this.getArticles();
+  }
+  constructor(private articleService:ArticleService){};
+  articles:Article [];
+  selectedArticle:Article;
+  onSelect(article:Article):void {
+    this.selectedArticle = article;
+  };
+  getArticles():void {
+    this.articleService.getArticles().then(articles =>this.articles = articles);
+  }
 }
+
