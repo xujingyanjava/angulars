@@ -1,0 +1,92 @@
+<div class="blog-main-left" *ngIf="article">
+  <!-- 文章内容（使用Kingeditor富文本编辑器发表的） -->
+  <div class="article-detail shadow">
+    <div class="article-detail-title" style="text-align: center;margin: 20px 0px;color: white;
+    font-weight: 700;text-shadow: 0 0 8px #000000;font-size: 24px;">
+      {{article.title}}
+    </div>
+    <div class="article-detail-info" style="    border: 1px dashed #808080;font-size: 13px;color: #808080;padding: 5px 0;
+    font-family: SimSun;text-align: center;margin: 0 0 10px;">
+      <span>编辑时间：{{article.createTime}}</span>
+      <span>作者：{{article.author}}</span>
+      <span>浏览量：{{article.viewCount}}</span>
+    </div>
+    <div class="article-detail-content">
+      <p style="text-align:center;">
+        <strong><span style="font-size:18px;">{{article.title}}</span></strong>
+      </p>
+      <p style="text-align:center;">
+        <strong>
+                                    <span style="font-size:18px;">
+                                        <br />
+                                    </span>
+        </strong>
+      </p>
+
+      <p style="text-align:left;">
+        <br />
+      </p>
+      <hr />
+      <p>
+        <br />
+      </p>
+      <div style="text-align:center;">
+        &nbsp; &nbsp; <span style="color:#EE33EE;">前言</span>：那么请忽略这篇文章！
+      </div>
+      <hr />
+      <p>
+        <br />
+      </p>
+      <p>
+        &nbsp; &nbsp; {{article.content}}
+      </p>
+      <p>
+        <br />
+      </p>
+
+      <hr />
+      &nbsp; &nbsp; 出自：jock_xu
+      <p>
+        &nbsp; &nbsp; 地址：<a href="http://www.onepiece.ren" target="_blank">www.onepiece.ren</a>
+      </p>
+      <p>
+        &nbsp; &nbsp; 转载请注明出处！<img src="../../images/0.gif" border="0" alt="" />
+      </p>
+      <p>
+        <br />
+      </p>
+    </div>
+  </div>
+  <!-- 评论区域 -->
+  <div class="blog-module shadow" style="box-shadow: 0 1px 8px #a6a6a6;">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-bottom:0">
+      <legend>来说两句吧</legend>
+      <div class="layui-field-box">
+        <form class="layui-form blog-editor" action="">
+          <div class="layui-form-item">
+            <textarea name="editorContent" lay-verify="content" id="remarkEditor" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
+          </div>
+          <div class="layui-form-item">
+            <button class="layui-btn" lay-submit="formRemark" lay-filter="formRemark">提交评论</button>
+          </div>
+        </form>
+      </div>
+    </fieldset>
+    <div class="blog-module-title">最新评论</div>
+    <ul class="blog-comment">
+      <li>
+        <div class="comment-parent">
+          <img src="../images/headImg.jpg" alt="jock" />
+          <div class="info">
+            <span class="username">jock</span>
+            <span class="time">2017-03-18 18:46:06</span>
+          </div>
+          <div class="content">
+            测试！！！！！！！！
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+

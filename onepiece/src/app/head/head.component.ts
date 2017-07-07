@@ -11,7 +11,7 @@ import { ArticleService } from '../service/article.service';
             </div>
             <div class="article-right">
               <div class="article-title">
-                <a href="detail.html">{{article.title}}</a>
+                <a routerLink="/detail">{{article.title}}</a>
               </div>
               <div class="article-abstract">
                 {{article.content}}
@@ -31,7 +31,7 @@ import { ArticleService } from '../service/article.service';
           </div>
           
           <article-detail [article]="selectedArticle"></article-detail>
-           
+           <router-outlet></router-outlet>
 `
 })
 

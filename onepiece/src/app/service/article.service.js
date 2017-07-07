@@ -13,6 +13,9 @@ var ArticleService = (function () {
     ArticleService.prototype.getArticles = function () {
         return Promise.resolve(mock_articles_1.ARTICLES);
     };
+    ArticleService.prototype.getArticle = function (id) {
+        return this.getArticles().then(function (articles) { return articles.find(function (article) { return article.id === id; }); });
+    };
     return ArticleService;
 }());
 ArticleService = __decorate([
