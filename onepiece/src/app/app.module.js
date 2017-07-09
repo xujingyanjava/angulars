@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var head_component_1 = require("./head/head.component");
 var article_detail_component_1 = require("./model/article-detail.component");
@@ -17,9 +18,21 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule],
+        imports: [
+            platform_browser_1.BrowserModule,
+            router_1.RouterModule.forRoot([
+                {
+                    path: 'articles',
+                    component: head_component_1.HeadComponent
+                },
+                {
+                    path: "detail/:id",
+                    component: article_detail_component_1.ArticleDetailComponent
+                }
+            ])
+        ],
         declarations: [app_component_1.AppComponent, head_component_1.HeadComponent, article_detail_component_1.ArticleDetailComponent],
-        bootstrap: [head_component_1.HeadComponent]
+        bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
 exports.AppModule = AppModule;
