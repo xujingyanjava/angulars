@@ -3,9 +3,9 @@ import { Article } from '../model/article'
 import { ArticleService } from '../service/article.service';
 @Component({
   selector:'article-list',
-  providers:[ArticleService],
   template:`
-          <div class="article shadow" *ngFor="let article of articles" (click)="onSelect(article)"> 
+          <!--<div class="article shadow" *ngFor="let article of articles" (click)="onSelect(article)"> -->
+          <div class="article shadow" *ngFor="let article of articles" [routerLink]="['/detail',article.id]"> 
             <div class="article-left">
               <img src="{{article.contentImage}}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
             </div>
