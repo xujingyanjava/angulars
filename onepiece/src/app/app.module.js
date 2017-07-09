@@ -28,6 +28,10 @@ AppModule = __decorate([
                 {
                     path: "detail/:id",
                     component: article_detail_component_1.ArticleDetailComponent
+                }, {
+                    path: '',
+                    redirectTo: '/articles',
+                    pathMatch: 'full'
                 }
             ])
         ],

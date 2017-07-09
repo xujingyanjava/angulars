@@ -20,6 +20,10 @@ import { ArticleDetailComponent } from './model/article-detail.component';
       {
         path:"detail/:id",
         component:ArticleDetailComponent
+      },{
+        path:'',
+        redirectTo:'/articles',
+        pathMatch:'full'
       }
     ])
   ],
