@@ -1,11 +1,13 @@
 
 export class Article {
-  id:number;
+  articleId:number;
+  articleTpyeId:number;
   author:string;
   content:string;
-  title:string;
-  createTime:string;
-  viewCount:number;
-  commentCount:number;
   contentImage:string;
+  isHot:number;
+  isRecommend:number;
+  title:string;
+  updateTime:string;
+  viewCount:string;
 }
