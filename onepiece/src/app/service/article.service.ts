@@ -3,6 +3,7 @@ import { Article } from '../model/article';
 // import { ARTICLES } from '../model/mock-articles';
 import {Http, Headers, URLSearchParams, RequestOptionsArgs} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
+import headersToString = http.headersToString;
 
 @Injectable()
 export class ArticleService {
@@ -10,6 +11,7 @@ export class ArticleService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private baseUrl='http://api.onepiece.ren/demo/';
   private articlesUrl = this.baseUrl+'getArticleList';
+  private articleInfoUrl = this.baseUrl+'getArticleInfo';
 
   constructor(private http:Http){}
 
@@ -32,6 +34,16 @@ export class ArticleService {
   }
 
   getArticle(id:number):Promise<Article> {
-    return this.getArticles().then(articles =>articles.find(article =>article.id === id));
+    alert(id);
+    let params =new URLSearchParams();
+    params.set("articleId",id);
+
+    let options:RequestOptionsArgs = {
+      search:params
+    };
+    return this.http.post(this.articleInfoUrl,options,{
+      headers:this.headers
+    }).toPromise().then(response => response.json().data as Article);
+    // return this.getArticles().then(articles =>articles.find(article =>article.id === id));
   }
 }

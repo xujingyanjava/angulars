@@ -18,6 +18,7 @@ var ArticleService = (function () {
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.baseUrl = 'http://api.onepiece.ren/demo/';
         this.articlesUrl = this.baseUrl + 'getArticleList';
+        this.articleInfoUrl = this.baseUrl + 'getArticleInfo';
     }
     ArticleService.prototype.getArticles = function () {
         var params = new http_1.URLSearchParams();
@@ -36,7 +37,16 @@ var ArticleService = (function () {
         return Promise.reject(error.message || error);
     };
     ArticleService.prototype.getArticle = function (id) {
-        return this.getArticles().then(function (articles) { return articles.find(function (article) { return article.id === id; }); });
+        alert(id);
+        var params = new http_1.URLSearchParams();
+        params.set("articleId", id);
+        var options = {
+            search: params
+        };
+        return this.http.post(this.articleInfoUrl, options, {
+            headers: this.headers
+        }).toPromise().then(function (response) { return response.json().data; });
+        // return this.getArticles().then(articles =>articles.find(article =>article.id === id));
     };
     return ArticleService;
 }());
