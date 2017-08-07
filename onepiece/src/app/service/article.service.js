@@ -16,37 +16,45 @@ var ArticleService = (function () {
     function ArticleService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.baseUrl = 'http://api.onepiece.ren/demo/';
+        // private baseUrl='http://api.onepiece.ren/demo/';
+        this.baseUrl = 'http://localhost:8087/demo/';
         this.articlesUrl = this.baseUrl + 'getArticleList';
         this.articleInfoUrl = this.baseUrl + 'getArticleInfo';
     }
+    /**
+     * 获取文章列表
+     * @returns {Promise<R>|Promise<any|T>|webdriver.promise.Promise<R>|Promise<any>|Observable<R>|any}
+     */
     ArticleService.prototype.getArticles = function () {
         var params = new http_1.URLSearchParams();
-        params.set('pageNo', 1);
-        params.set('pageSize', 10);
-        var options = {
-            search: params
-        };
-        return this.http.post(this.articlesUrl, options, {
+        params.set('pageNo', "1");
+        params.set('pageSize', "1");
+        var body = JSON.stringify({
+            pageNo: 1,
+            pageSize: 1
+        });
+        return this.http.post(this.articlesUrl, body, {
             headers: this.headers
         }).toPromise().then(function (response) { return response.json().data.articleList; })
             .catch(this.handleError);
     };
+    /**
+     * 获取详情信息
+     * @param id
+     * @returns {any}
+     */
+    ArticleService.prototype.getArticle = function (id) {
+        var body = JSON.stringify({
+            articleId: id
+        });
+        return this.http.post(this.articleInfoUrl, body, {
+            headers: this.headers
+        }).toPromise().then(function (response) { return response.json().data.article; });
+        // return this.getArticles().then(articles =>articles.find(article =>article.id === id));
+    };
     ArticleService.prototype.handleError = function (error) {
         console.error("an error occurred", error);
         return Promise.reject(error.message || error);
-    };
-    ArticleService.prototype.getArticle = function (id) {
-        alert(id);
-        var params = new http_1.URLSearchParams();
-        params.set("articleId", id);
-        var options = {
-            search: params
-        };
-        return this.http.post(this.articleInfoUrl, options, {
-            headers: this.headers
-        }).toPromise().then(function (response) { return response.json().data; });
-        // return this.getArticles().then(articles =>articles.find(article =>article.id === id));
     };
     return ArticleService;
 }());

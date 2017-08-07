@@ -23,8 +23,8 @@ var ArticleDetailComponent = (function () {
     ;
     ArticleDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.params
-            .switchMap(function (params) { return _this.articleService.getArticle(+params['id']); })
+        this.route.paramMap
+            .switchMap(function (params) { return _this.articleService.getArticle(+params.get('id')); })
             .subscribe(function (article) { return _this.article = article; });
     };
     ;
@@ -40,11 +40,12 @@ __decorate([
 ], ArticleDetailComponent.prototype, "article", void 0);
 ArticleDetailComponent = __decorate([
     core_1.Component({
-        selector: 'article-detail',
         providers: [article_service_1.ArticleService],
         templateUrl: '/app/html/article-detail.component.html'
     }),
-    __metadata("design:paramtypes", [article_service_1.ArticleService, router_1.ActivatedRoute, common_1.Location])
+    __metadata("design:paramtypes", [article_service_1.ArticleService,
+        router_1.ActivatedRoute,
+        common_1.Location])
 ], ArticleDetailComponent);
 exports.ArticleDetailComponent = ArticleDetailComponent;
 //# sourceMappingURL=article-detail.component.js.map

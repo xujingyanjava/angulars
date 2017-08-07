@@ -4,7 +4,6 @@ import { ArticleService } from '../service/article.service';
 @Component({
   selector:'article-list',
   template:`
-          <!--<div class="article shadow" *ngFor="let article of articles" (click)="onSelect(article)"> -->
           <div class="article shadow" *ngFor="let article of articles" [routerLink]="['/detail',article.articleId]"> 
             <div class="article-left">
               <img src="{{article.contentImage}}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
@@ -30,8 +29,6 @@ import { ArticleService } from '../service/article.service';
           <div *ngIf="selectedArticle">
           <h2>{{selectedArticle.content}}</h2>
           </div>
-          
-          <article-detail [article]="selectedArticle"></article-detail>
            <router-outlet></router-outlet>
 `
 })

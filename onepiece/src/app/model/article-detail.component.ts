@@ -5,7 +5,6 @@ import 'rxjs/add/operator/switchMap';
 import { Article } from "../model/article";
 import { ArticleService } from '../service/article.service'
 @Component({
-  selector:'article-detail',
   providers:[ArticleService],
   templateUrl:'/app/html/article-detail.component.html'
 })
@@ -15,11 +14,15 @@ import { ArticleService } from '../service/article.service'
 export class ArticleDetailComponent implements OnInit{
   @Input() article:Article;
 
-  constructor(private articleService:ArticleService, private route:ActivatedRoute, private location:Location){};
+  constructor(
+    private articleService:ArticleService,
+    private route:ActivatedRoute,
+    private location:Location
+  ){};
 
   ngOnInit():void {
-    this.route.params
-      .switchMap((params: Params) => this.articleService.getArticle(+params['id']))
+    this.route.paramMap
+      .switchMap((params: Params) => this.articleService.getArticle(+params.get('id')))
       .subscribe(article => this.article = article);
   };
 
