@@ -1,7 +1,7 @@
 ﻿/*
 
-@Name：不落阁整站模板源码 
-@Author：Absolutely 
+@Name：不落阁整站模板源码
+@Author：Absolutely
 @Site：http://www.lyblogs.cn
 
 */
@@ -63,7 +63,7 @@ layui.use(['element', 'jquery', 'form', 'layedit'], function () {
         setTimeout(function () {
             layer.close(index);
             var content = data.field.replyContent;
-            var html = '<div class="comment-child"><img src="../images/Absolutely.jpg"alt="Absolutely"/><div class="info"><span class="username">模拟回复</span><span>' + content + '</span></div><p class="info"><span class="time">2017-03-18 18:26</span></p></div>';
+            var html = '<div class="comment-child"><img src="../images/dushen.jpg"alt="Absolutely"/><div class="info"><span class="username">模拟回复</span><span>' + content + '</span></div><p class="info"><span class="time">2017-03-18 18:26</span></p></div>';
             $(data.form).find('textarea').val('');
             $(data.form).parent('.replycontainer').before(html).siblings('.comment-parent').children('p').children('a').click();
             layer.msg("回复成功", { icon: 1 });

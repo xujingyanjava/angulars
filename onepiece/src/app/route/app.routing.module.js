@@ -7,16 +7,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var head_component_1 = require("../head/head.component");
-var article_detail_component_1 = require("../model/article-detail.component");
+var articleList_component_1 = require("../component/articleList.component");
+var article_detail_component_1 = require("../component/article-detail.component");
 var routes = [
     {
         path: 'articles',
-        component: head_component_1.HeadComponent
+        component: articleList_component_1.ArticleListComponent
     },
     {
         path: "detail/:id",
         component: article_detail_component_1.ArticleDetailComponent
+    },
+    {
+        path: 'articles/:id',
+        component: articleList_component_1.ArticleListComponent
     },
     {
         path: '',

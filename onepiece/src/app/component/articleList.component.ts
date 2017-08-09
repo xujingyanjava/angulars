@@ -1,6 +1,9 @@
 import { Component ,OnInit } from '@angular/core';
 import { Article } from '../model/article'
 import { ArticleService } from '../service/article.service';
+import {ActivatedRoute, ParamMap} from "@angular/router";
+import 'rxjs/add/operator/switchMap';
+
 @Component({
   selector:'article-list',
   template:`
@@ -33,11 +36,17 @@ import { ArticleService } from '../service/article.service';
 `
 })
 
-export class HeadComponent implements OnInit{
+export class ArticleListComponent implements OnInit{
   ngOnInit(): void {
     this.getArticles();
+    this.route.paramMap.switchMap((params=>{
+      alert(params.get('id')+"66666666666")
+    }))
   }
-  constructor(private articleService:ArticleService){};
+  constructor(
+    private articleService:ArticleService,
+    private route:ActivatedRoute
+  ){};
   articles:Article [];
   selectedArticle:Article;
   onSelect(article:Article):void {

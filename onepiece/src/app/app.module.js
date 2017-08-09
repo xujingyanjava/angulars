@@ -9,9 +9,10 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
-var head_component_1 = require("./head/head.component");
-var article_detail_component_1 = require("./model/article-detail.component");
-var app_routing_module_1 = require("./model/app.routing.module");
+var articleList_component_1 = require("./component/articleList.component");
+var article_detail_component_1 = require("./component/article-detail.component");
+var article_type_component_1 = require("./component/article-type.component");
+var app_routing_module_1 = require("./route/app.routing.module");
 var article_service_1 = require("./service/article.service");
 var AppModule = (function () {
     function AppModule() {
@@ -25,9 +26,9 @@ AppModule = __decorate([
             app_routing_module_1.AppRoutingModule,
             http_1.HttpModule,
         ],
-        declarations: [app_component_1.AppComponent, head_component_1.HeadComponent, article_detail_component_1.ArticleDetailComponent],
+        declarations: [app_component_1.AppComponent, articleList_component_1.ArticleListComponent, article_detail_component_1.ArticleDetailComponent, article_type_component_1.ArticleTypeComponent],
         providers: [article_service_1.ArticleService],
-        bootstrap: [app_component_1.AppComponent]
+        bootstrap: [app_component_1.AppComponent, article_type_component_1.ArticleTypeComponent]
     })
 ], AppModule);
 exports.AppModule = AppModule;

@@ -1,7 +1,7 @@
 ﻿/*
 
-@Name：不落阁整站模板源码 
-@Author：Absolutely 
+@Name：不落阁整站模板源码
+@Author：Absolutely
 @Site：http://www.lyblogs.cn
 
 */
@@ -33,7 +33,7 @@ layui.use(['form', 'layedit'], function () {
         setTimeout(function () {
             layer.close(index);
             var content = data.field.editorContent;
-            var html = '<li><div class="comment-parent"><img src="../images/Absolutely.jpg"alt="absolutely"/><div class="info"><span class="username">Absolutely</span><span class="time">2017-03-18 18:46:06</span></div><div class="content">' + content + '</div></div></li>';
+            var html = '<li><div class="comment-parent"><img src="../images/dushen.jpg"alt="absolutely"/><div class="info"><span class="username">Absolutely</span><span class="time">2017-03-18 18:46:06</span></div><div class="content">' + content + '</div></div></li>';
             $('.blog-comment').append(html);
             $('#remarkEditor').val('');
             editIndex = layui.layedit.build('remarkEditor', {

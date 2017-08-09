@@ -1,17 +1,21 @@
 import { NgModule }      from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import { HeadComponent } from '../head/head.component';
-import { ArticleDetailComponent } from '../model/article-detail.component';
+import {ArticleListComponent} from '../component/articleList.component';
+import { ArticleDetailComponent } from '../component/article-detail.component';
 
 
 const routes:Routes = [
   {
     path:'articles',
-    component:HeadComponent
+    component:ArticleListComponent
   },
   {
     path:"detail/:id",
     component:ArticleDetailComponent
+  },
+  {
+    path:'articles/:id',
+    component:ArticleListComponent
   },
   {
     path:'',

@@ -1,5 +1,5 @@
 import { Component, Input,OnInit } from '@angular/core'
-import { ActivatedRoute,Params } from '@angular/router';
+import { ActivatedRoute,ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import { Article } from "../model/article";
@@ -22,7 +22,7 @@ export class ArticleDetailComponent implements OnInit{
 
   ngOnInit():void {
     this.route.paramMap
-      .switchMap((params: Params) => this.articleService.getArticle(+params.get('id')))
+      .switchMap((params: ParamMap) => this.articleService.getArticle(+params.get('id')))
       .subscribe(article => this.article = article);
   };
 

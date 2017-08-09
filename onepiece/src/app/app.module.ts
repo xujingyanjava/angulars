@@ -7,9 +7,11 @@ import {} from './in-memory-data.service'
 
 import { AppComponent }  from './app.component';
 
-import { HeadComponent } from './head/head.component';
-import { ArticleDetailComponent } from './model/article-detail.component';
-import { AppRoutingModule } from './model/app.routing.module';
+import { ArticleListComponent } from './component/articleList.component';
+import { ArticleDetailComponent } from './component/article-detail.component';
+import { ArticleTypeComponent } from './component/article-type.component';
+
+import { AppRoutingModule } from './route/app.routing.module';
 import { ArticleService } from "./service/article.service";
 
 @NgModule({
@@ -18,9 +20,9 @@ import { ArticleService } from "./service/article.service";
     AppRoutingModule,
     HttpModule,
   ],
-  declarations: [ AppComponent ,HeadComponent,ArticleDetailComponent],
+  declarations: [ AppComponent ,ArticleListComponent,ArticleDetailComponent,ArticleTypeComponent],
   providers:[ArticleService],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent,ArticleTypeComponent]
 })
 
 
