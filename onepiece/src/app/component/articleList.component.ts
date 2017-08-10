@@ -38,10 +38,10 @@ import 'rxjs/add/operator/switchMap';
 
 export class ArticleListComponent implements OnInit{
   ngOnInit(): void {
-    this.getArticles();
-    this.route.paramMap.switchMap((params=>{
-      alert(params.get('id')+"66666666666")
-    }))
+    this.route.params.subscribe((params) => {
+      this.getArticles(+params['id']);
+    });
+
   }
   constructor(
     private articleService:ArticleService,
@@ -52,8 +52,8 @@ export class ArticleListComponent implements OnInit{
   onSelect(article:Article):void {
     this.selectedArticle = article;
   };
-  getArticles():void {
-    this.articleService.getArticles().then(articles =>this.articles = articles);
+  getArticles(articleTypeId:number):void {
+    this.articleService.getArticles(articleTypeId).then(articles =>this.articles = articles);
   }
 }
 

@@ -1,18 +1,17 @@
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import { ArticleType } from '../model/articleType.component'
 import {ArticleTypeService} from "../service/articleType.service";
 
 @Component({
   selector:'article-type',
   template:`
-        <ul class="layui-nav" lay-filter="nav" >
          <li class="layui-nav-item layui-this">
           <a href="articles"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
         </li>
         <li class="layui-nav-item" *ngFor="let articleType of articleTypes">
           <a [routerLink]="['/articles',articleType.articleTypeId]"><i class="fa fa-info fa-fw"></i>{{articleType.articleTypeName}}</a>
         </li>
-      </ul>`,
+      `,
   providers:[ArticleTypeService]
 })
 

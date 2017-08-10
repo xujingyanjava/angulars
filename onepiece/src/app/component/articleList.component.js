@@ -18,19 +18,19 @@ var ArticleListComponent = (function () {
         this.route = route;
     }
     ArticleListComponent.prototype.ngOnInit = function () {
-        this.getArticles();
-        this.route.paramMap.switchMap((function (params) {
-            alert(params.get('id') + "66666666666");
-        }));
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.getArticles(+params['id']);
+        });
     };
     ;
     ArticleListComponent.prototype.onSelect = function (article) {
         this.selectedArticle = article;
     };
     ;
-    ArticleListComponent.prototype.getArticles = function () {
+    ArticleListComponent.prototype.getArticles = function (articleTypeId) {
         var _this = this;
-        this.articleService.getArticles().then(function (articles) { return _this.articles = articles; });
+        this.articleService.getArticles(articleTypeId).then(function (articles) { return _this.articles = articles; });
     };
     return ArticleListComponent;
 }());

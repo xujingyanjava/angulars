@@ -19,20 +19,19 @@ export class ArticleService {
    * 获取文章列表
    * @returns {Promise<R>|Promise<any|T>|webdriver.promise.Promise<R>|Promise<any>|Observable<R>|any}
    */
-  getArticles():Promise<Article[]> {
-    let params = new URLSearchParams();
-    params.set('pageNo',"1");
-    params.set('pageSize',"1");
+  getArticles(articleTypeId:number):Promise<Article[]> {
 
     let body = JSON.stringify({
       pageNo:1,
-      pageSize:1
+      pageSize:10,
+      articleTypeId:articleTypeId
     });
      return this.http.post(this.articlesUrl,body,{
       headers: this.headers
     }).toPromise(). then(response => response.json().data.articleList as Article[])
        .catch(this.handleError)
   }
+
 
   /**
    * 获取详情信息

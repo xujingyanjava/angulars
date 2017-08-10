@@ -28,7 +28,7 @@ var ArticleTypeComponent = (function () {
 ArticleTypeComponent = __decorate([
     core_1.Component({
         selector: 'article-type',
-        template: "\n        <ul class=\"layui-nav\" lay-filter=\"nav\" >\n         <li class=\"layui-nav-item layui-this\">\n          <a href=\"articles\"><i class=\"fa fa-home fa-fw\"></i>&nbsp;\u7F51\u7AD9\u9996\u9875</a>\n        </li>\n        <li class=\"layui-nav-item\" *ngFor=\"let articleType of articleTypes\">\n          <a [routerLink]=\"['/articles',articleType.articleTypeId]\"><i class=\"fa fa-info fa-fw\"></i>{{articleType.articleTypeName}}</a>\n        </li>\n      </ul>",
+        template: "\n         <li class=\"layui-nav-item layui-this\">\n          <a href=\"articles\"><i class=\"fa fa-home fa-fw\"></i>&nbsp;\u7F51\u7AD9\u9996\u9875</a>\n        </li>\n        <li class=\"layui-nav-item\" *ngFor=\"let articleType of articleTypes\">\n          <a [routerLink]=\"['/articles',articleType.articleTypeId]\"><i class=\"fa fa-info fa-fw\"></i>{{articleType.articleTypeName}}</a>\n        </li>\n      ",
         providers: [articleType_service_1.ArticleTypeService]
     }),
     __metadata("design:paramtypes", [articleType_service_1.ArticleTypeService])

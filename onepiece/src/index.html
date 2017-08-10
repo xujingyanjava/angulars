@@ -46,9 +46,12 @@
         <img src="../images/dushen.jpg" alt="Absolutely" title="Absolutely" />
       </a>
       <!-- 不落阁 -->
-      <a class="blog-logo" href="home.html">onepiece</a>
+      <a class="blog-logo" href="articles">onepiece</a>
       <!-- 导航菜单 -->
-      <article-type></article-type>
+      <ul class="layui-nav" lay-filter="nav" >
+        <article-type></article-type>
+        <!--<article-type></article-type>-->
+      </ul>
       <!-- 手机和平板的导航开关 -->
       <a class="blog-navicon" href="javascript:;">
         <i class="fa fa-navicon"></i>
@@ -112,6 +115,12 @@
   <footer class="blog-footer">
     <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="http://www.lyblogs.cn">onepiece</a><span>Design By jock</span></p>
   </footer>
+  <!--侧边导航-->
+  <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+    <li class="layui-nav-item layui-this">
+      <a href="articles"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+    </li>
+  </ul>
   <!--遮罩-->
   <div class="blog-mask animated layui-hide"></div>
   <!-- layui.js -->
